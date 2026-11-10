@@ -1,0 +1,75 @@
+print("=== PROGRAM SISTEM INFORMASI PASIEN OPNAME ===")
+
+# Input data pasien
+nama_pasien = input("Masukkan nama pasien: ")
+lama_inap = int(input("Masukkan lama rawat inap (hari): "))
+
+# Pilihan 10 Jenis Pasien Opname
+print("\nPilih Jenis Pasien Opname (1-10):")
+print("1. Demam Berdarah (DBD)   6. Jantung")
+print("2. Tifus                  7. Stroke")
+print("3. Asma Akut              8. Diabetes Melitus")
+print("4. Pneumonia              9. Pasca Operasi Caesar")
+print("5. Demam Tinggi          10. Demam Berdarah Berat")
+pilihan = int(input("Masukkan nomor jenis pasien (1-10): "))
+
+# Pilihan Kelas Kamar menggunakan nomor (tinggal pilih angka)
+print("\nPilih Kelas Kamar (1-4):")
+print("1. VIP (Rp1.000.000/hari)")
+print("2. Kelas 1 (Rp600.000/hari)")
+print("3. Kelas 2 (Rp350.000/hari)")
+print("4. Kelas 3 / Standar (Rp150.000/hari)")
+pilihan_kamar = int(input("Masukkan nomor kelas kamar (1-4): "))
+
+# Menentukan nama kamar dan tarif per hari berdasarkan pilihan nomor
+nama_kamar = ""
+tarif_kamar = 0
+
+if pilihan_kamar == 1:
+    nama_kamar = "VIP"
+    tarif_kamar = 1000000
+elif pilihan_kamar == 2:
+    nama_kamar = "Kelas 1"
+    tarif_kamar = 600000
+elif pilihan_kamar == 3:
+    nama_kamar = "Kelas 2"
+    tarif_kamar = 350000
+elif pilihan_kamar == 4:
+    nama_kamar = "Kelas 3 / Standar"
+    tarif_kamar = 150000
+else:
+    nama_kamar = "Kelas 3 / Standar (Otomatis)"
+    tarif_kamar = 150000
+
+# Validasi jenis pasien menggunakan operator pembanding & kondisional
+jenis_pasien = ""
+if pilihan == 1: jenis_pasien = "Demam Berdarah (DBD)"
+elif pilihan == 2: jenis_pasien = "Tifus"
+elif pilihan == 3: jenis_pasien = "Asma Akut"
+elif pilihan == 4: jenis_pasien = "Pneumonia"
+elif pilihan == 5: jenis_pasien = "Demam Tinggi"
+elif pilihan == 6: jenis_pasien = "Jantung"
+elif pilihan == 7: jenis_pasien = "Stroke"
+elif pilihan == 8: jenis_pasien = "Diabetes Melitus"
+elif pilihan == 9: jenis_pasien = "Pasca Operasi Caesar"
+elif pilihan == 10: jenis_pasien = "Demam Berdarah Berat"
+else:
+    jenis_pasien = "Umum / Observasi"
+
+# Menghitung total biaya
+total_biaya = lama_inap * tarif_kamar
+
+print("\n================ RENCANA BIAYA OPNAME ================")
+print(f"Nama Pasien   : {nama_pasien}")
+print(f"Jenis Penyakit: {jenis_pasien}")
+print(f"Kelas Kamar   : {nama_kamar} (Rp{tarif_kamar}/hari)")
+print(f"Lama Rawat    : {lama_inap} hari")
+print(f"Total Biaya   : Rp{total_biaya}")
+
+# Operator Pembanding untuk memberikan diskon/kebijakan khusus
+if lama_inap > 7:
+    print("Keterangan    : Pasien mendapatkan diskon lama inap 10%!")
+    total_biaya = total_biaya * 0.9
+    print(f"Total Akhir   : Rp{int(total_biaya)}")
+else:
+    print("Keterangan    : Tarif normal.")
